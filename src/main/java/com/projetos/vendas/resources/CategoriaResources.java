@@ -1,29 +1,27 @@
 package com.projetos.vendas.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projetos.vendas.domain.Categoria;
+import com.projetos.vendas.servicies.CategoriaService;
 
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResources {
 	
-	@GetMapping
-	public List<Categoria> listar() {
-		
-		List<Categoria> lista = new ArrayList<>();
-		Categoria cat1 = new Categoria(1L, "Informatica");
-		Categoria cat2 = new Categoria(2L, "Linha Marron");
-		
-		lista.add(cat1);
-		lista.add(cat2);
-		
-		return lista;
+	@Autowired
+	private CategoriaService service;
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Categoria> buscaPorId(@PathVariable Long id) {
+		Categoria cate = service.buscarPorId(id);
+	
+		return ResponseEntity.ok().body(cate);
 	}
 
 }
