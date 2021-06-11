@@ -1,5 +1,7 @@
 package com.projetos.vendas.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,4 +26,10 @@ public class CategoriaResources {
 		return ResponseEntity.ok().body(cate);
 	}
 
+	@GetMapping
+	public ResponseEntity<List<Categoria>> buscarTodos(){
+		List<Categoria> lista = service.buscarTodos();
+		
+		return ResponseEntity.ok().body(lista);
+	}
 }

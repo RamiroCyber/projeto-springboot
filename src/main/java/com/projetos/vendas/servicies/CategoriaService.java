@@ -1,5 +1,6 @@
 package com.projetos.vendas.servicies;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,13 @@ public class CategoriaService {
 	
 	public Categoria buscarPorId(Long id) {
 		Optional<Categoria> cate = reposi.findById(id);
+		
 		return cate.orElse(null); 
+	}
+	
+	public List<Categoria> buscarTodos(){
+		List<Categoria> lista = reposi.findAll();
+		return lista;
 	}
 
 }
