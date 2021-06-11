@@ -17,8 +17,8 @@ public class CategoriaService {
 	
 	public Categoria buscarPorId(Long id) {
 		Optional<Categoria> cate = reposi.findById(id);
+		return cate.orElse(null);
 		
-		return cate.orElse(null); 
 	}
 	
 	public List<Categoria> buscarTodos(){
