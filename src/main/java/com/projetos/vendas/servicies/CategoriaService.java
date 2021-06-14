@@ -13,16 +13,16 @@ import com.projetos.vendas.repositories.CategoriaRepository;
 public class CategoriaService {
 	
 	@Autowired
-	private CategoriaRepository reposi;
+	private CategoriaRepository categoriaRepository;
 	
 	public Categoria buscarPorId(Long id) {
-		Optional<Categoria> cate = reposi.findById(id);
+		Optional<Categoria> cate = categoriaRepository.findById(id);
 		return cate.orElse(null);
 		
 	}
 	
 	public List<Categoria> buscarTodos(){
-		List<Categoria> lista = reposi.findAll();
+		List<Categoria> lista = categoriaRepository.findAll();
 		return lista;
 	}
 
