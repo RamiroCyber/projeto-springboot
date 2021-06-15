@@ -27,6 +27,6 @@ public enum TipoCliente {
 				return x;
 			}
 		}
-		throw new NullPointerException("Id não encontrado");
+		return null;
 	}
 }

@@ -2,8 +2,11 @@ package com.projetos.vendas.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import com.projetos.vendas.domain.enuns.EstadoPagamento;
 
+@Entity
 public class PagamentoBoleto extends Pagamento {
 	private static final long serialVersionUID = 1L;
 

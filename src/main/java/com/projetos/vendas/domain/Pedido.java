@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -17,11 +19,14 @@ public class Pedido implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private Date instante;
 
-	private Endereco enderecoDasEntregas;
+	@ManyToOne
+	@JoinColumn(name = "endereco_de_entrega_id")
+	private Endereco enderecoDasEntrega;
 
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
 	@OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
@@ -30,12 +35,12 @@ public class Pedido implements Serializable {
 	public Pedido() {
 	}
 
-	public Pedido(Date instante, Endereco enderecoDasEntregas, Cliente cliente, Pagamento pagamento) {
+	public Pedido(Date instante, Endereco enderecoDasEntrega, Cliente cliente) {
 		super();
 		this.instante = instante;
-		this.enderecoDasEntregas = enderecoDasEntregas;
+		this.enderecoDasEntrega = enderecoDasEntrega;
 		this.cliente = cliente;
-		this.pagamento = pagamento;
+		
 	}
 
 	public Long getId() {
@@ -51,11 +56,11 @@ public class Pedido implements Serializable {
 	}
 
 	public Endereco getEnderecoDasEntregas() {
-		return enderecoDasEntregas;
+		return enderecoDasEntrega;
 	}
 
-	public void setEnderecoDasEntregas(Endereco enderecoDasEntregas) {
-		this.enderecoDasEntregas = enderecoDasEntregas;
+	public void setEnderecoDasEntregas(Endereco enderecoDasEntrega) {
+		this.enderecoDasEntrega = enderecoDasEntrega;
 	}
 
 	public Cliente getCliente() {

@@ -27,6 +27,6 @@ public enum EstadoPagamento {
 				return x;
 			}
 		}
-		throw new NullPointerException("Id não encontrado");
+		return null;
 	}
 }
