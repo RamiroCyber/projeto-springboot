@@ -23,16 +23,16 @@ public class AplicationExceptions extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	public ResponseEntity DataAccessException(Exception e) {
-		return new ResponseEntity("Error timestamp:" + Instant.now(), HttpStatus.NOT_FOUND);
+		return new ResponseEntity("Error... timestamp:" + Instant.now(), HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(ConstraintViolationException.class)
 	public ResponseEntity ViolationException(Exception e) {
-		return new ResponseEntity("Error timestamp:" + Instant.now(), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity("Error... timestamp:" + Instant.now(), HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(EntityNotFoundException.class)
 	public ResponseEntity EntityNotFoundException(Exception e) {
-		return new ResponseEntity("Error timestamp:" + Instant.now(), HttpStatus.NOT_FOUND);
+		return new ResponseEntity("Error... timestamp:" + Instant.now(), HttpStatus.NOT_FOUND);
 	}
 }

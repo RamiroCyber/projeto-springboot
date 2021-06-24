@@ -17,7 +17,7 @@ public class ClienteService {
 	
 	public Cliente buscaPorId(Long id) {
 		Optional<Cliente> cliente = clienteRepository.findById(id);
-		return cliente.orElse(null);
+		return cliente.get();
 	}
 	
 	public List<Cliente> buscarTodos(){

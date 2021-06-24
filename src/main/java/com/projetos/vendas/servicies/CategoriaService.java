@@ -11,19 +11,22 @@ import com.projetos.vendas.repositories.CategoriaRepository;
 
 @Service
 public class CategoriaService {
-	
+
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	public Categoria buscarPorId(Long id) {
 		Optional<Categoria> cate = categoriaRepository.findById(id);
-		return cate.orElse(null);
-		
+		return cate.get();
 	}
-	
-	public List<Categoria> buscarTodos(){
+
+	public List<Categoria> buscarTodos() {
 		List<Categoria> lista = categoriaRepository.findAll();
 		return lista;
+	}
+	
+	public Categoria inserir(Categoria obj) {
+		return categoriaRepository.save(obj);
 	}
 
 }
