@@ -15,18 +15,24 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
-	public Categoria buscarPorId(Long id) {
+	public Categoria findById(Long id) {
 		Optional<Categoria> cate = categoriaRepository.findById(id);
 		return cate.get();
 	}
 
-	public List<Categoria> buscarTodos() {
+	public List<Categoria> findAll() {
 		List<Categoria> lista = categoriaRepository.findAll();
 		return lista;
 	}
-	
-	public Categoria inserir(Categoria obj) {
+
+	public Categoria insert(Categoria obj) {
 		return categoriaRepository.save(obj);
+	}
+
+	public Categoria upDate(Long id, Categoria cate) {
+		Categoria categoria = categoriaRepository.getOne(id);
+		categoria.setNome(cate.getNome());
+		return categoriaRepository.save(categoria);
 	}
 
 }
